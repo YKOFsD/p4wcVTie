@@ -1,0 +1,52 @@
+"```python
+import random
+import sys
+
+
+def generate_matrix(rows, cols):
+    matrix = []
+    for row in range(rows):
+        matrix.append([random.randint(1, 100) for _ in range(cols)])
+    return matrix
+
+
+def matrix_multiplication(matrix1, matrix2):
+    rows_matrix1 = len(matrix1)
+    cols_matrix1 = len(matrix1[0])
+
+    rows_matrix2 = len(matrix2)
+    cols_matrix2 = len(matrix2[0])
+
+    if cols_matrix1 != rows_matrix2:
+        print(""Matrices cannot be multiplied!"")
+        sys.exit()
+
+    result_matrix = [[0 for _ in range(cols_matrix2)] for _ in range(rows_matrix1)]
+
+    for i in range(rows_matrix1):
+        for j in range(cols_matrix2):
+            for k in range(cols_matrix1):  # also equal to rows_matrix2
+                result_matrix[i][j] += matrix1[i][k] * matrix2[k][j]
+
+    return result_matrix
+ 
+
+if __name__ == ""__main__"":
+    matrix1 = generate_matrix(3, 4)
+    matrix2 = generate_matrix(4, 2)
+
+    print(""Matrix 1:"")
+    for row in matrix1:
+        print(row)
+
+    print(""\nMatrix 2:"")
+    for row in matrix2:
+        print(row)
+
+    result = matrix_multiplication(matrix1, matrix2)
+    print(""\nResulting matrix:"")
+    for row in result:
+        print(row)
+```
+
+这段代码使用 Python 编写，主要实现了生成随机矩阵并计算两个矩阵相乘的功能。标题为 Matrix_Multiplication（矩阵乘法），代码内容复杂度较高。"
